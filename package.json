@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "devDependencies": {
+    "usir": "*",
+    "usir-websocket-client": "*",
+    "lerna": "2.0.0-beta.13"
+  }
+}
