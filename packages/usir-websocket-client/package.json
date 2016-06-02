@@ -1,6 +1,6 @@
 {
   "name": "usir-websocket-client",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "usir client using the websocket transport",
   "main": "lib/index.js",
   "scripts": {
@@ -16,6 +16,7 @@
     "url": "https://github.com/usir/usir.js/issues"
   },
   "dependencies": {
+    "usir": "0.1.0",
     "backoff-func": "^0.1.2",
     "websocket": "^1.0.23"
   }
