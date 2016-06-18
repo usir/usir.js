@@ -15,7 +15,7 @@ function UsirTransportWebsocketClientConn(url, opts, accepts, createConn) {
 UsirTransportWebsocketClientConn.prototype = {
   resolve: function(path) {
     // TODO create the message
-    var message = {path: path, type: "resolve"};
+    var message = [0, path];
     this._call(message);
   },
 
@@ -69,6 +69,7 @@ UsirTransportWebsocketClientConn.prototype = {
     });
 
     c.addEventListener('close', function(evt) {
+      console.log(evt);
       var buffer = protocol ? protocol.terminate() : null;
       // TODO only reconnect on errors
       if (opts.reconnect !== false) self._reconnect(url, opts, accepts, createConn, buffer);

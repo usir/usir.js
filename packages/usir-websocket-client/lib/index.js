@@ -1,7 +1,7 @@
 var Client = require('usir/lib/client');
 var statefulProtocol = require('usir/lib/protocol/stateful').createProtocol;
 var UsirTransportWebsocketClientConn = require('./conn');
-var jsonFormat = require('usir/lib/format/json');
+var defaultFormat = require('usir/lib/format/json');
 
 module.exports = UsirTransportWebsocketClient;
 
@@ -34,7 +34,7 @@ UsirTransportWebsocketClient.prototype = {
       }
     };
 
-    var format = this.formats[wsprotocol.replace('usir|', '')] || jsonFormat;
+    var format = this.formats[wsprotocol.replace('usir|', '')] || defaultFormat;
 
     var conn = new Client(handler, format);
     return this.createProtocol(conn, opts);

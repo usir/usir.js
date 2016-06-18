@@ -30,7 +30,7 @@ UsirProtocolStateful.prototype = {
     return this._reply();
   },
   terminate: function() {
-    this.dispatch.terminate();
+    //this.dispatch.terminate();
     this._clearTimeout();
     var buffer = this.buffer;
     return buffer.length ? buffer : null;

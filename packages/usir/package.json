@@ -14,5 +14,8 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/usir/usir.js/issues"
+  },
+  "dependencies": {
+    "msgpack-js-browser": "^0.1.4"
   }
 }
