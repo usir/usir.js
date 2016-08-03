@@ -1,7 +1,8 @@
 module.exports = UsirClient;
 
-function UsirClient(handler, format) {
-  this.handler = handler;
+function UsirClient(handler, format, opts) {
+  handler = this.handler = Object.create(handler);
+  handler.init(opts);
   this.format = format;
 }
 

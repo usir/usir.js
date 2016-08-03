@@ -17,7 +17,6 @@
   },
   "dependencies": {
     "usir": "0.1.0",
-    "backoff-func": "^0.1.2",
     "websocket": "^1.0.23"
   }
 }

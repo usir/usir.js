@@ -12,7 +12,7 @@ UsirQueue.prototype = {
   },
   pop: function(count) {
     return count < this.limit ?
-      this._pending.pop() :
+      this._pending.shift() :
       null;
   }
 };

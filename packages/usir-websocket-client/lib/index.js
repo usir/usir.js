@@ -1,24 +1,23 @@
 var Client = require('usir/lib/client');
 var statefulProtocol = require('usir/lib/protocol/stateful').createProtocol;
 var UsirTransportWebsocketClientConn = require('./conn');
-var defaultFormat = require('usir/lib/format/json');
+var defaultFormat = require('usir/lib/format/msgpack');
 
 module.exports = UsirTransportWebsocketClient;
 
-function UsirTransportWebsocketClient(formats, handler, createProtocol) {
+function UsirTransportWebsocketClient(handler, formats, opts) {
   this.formats = formats;
   this.handler = handler;
   this.accepts = Object.keys(formats).map(function(accept) {
     return 'usir|' + accept;
   });
-  this.createProtocol = createProtocol || statefulProtocol;
+  this.createProtocol = opts.createProtocol || statefulProtocol;
   this._init = this._init.bind(this);
 }
 
-UsirTransportWebsocketClient.open = function(url, opts, formats) {
+UsirTransportWebsocketClient.open = function(url, handler, formats, opts) {
   opts = opts || {};
-  formats = formats || opts.formats || {};
-  var client = new UsirTransportWebsocketClient(formats, opts.handler, opts.createProtocol);
+  var client = new UsirTransportWebsocketClient(handler, formats, {});
   return client.open(url, opts);
 };
 
@@ -34,9 +33,9 @@ UsirTransportWebsocketClient.prototype = {
       }
     };
 
-    var format = this.formats[wsprotocol.replace('usir|', '')] || defaultFormat;
+    var format = this.formats[wsprotocol.replace('usir|', '')] || defaultFormat();
 
-    var conn = new Client(handler, format);
-    return this.createProtocol(conn, opts);
+    var conn = new Client(handler, format, opts);
+    return this.createProtocol(conn);
   }
 };

@@ -16,6 +16,7 @@
     "url": "https://github.com/usir/usir.js/issues"
   },
   "dependencies": {
-    "msgpack-js-browser": "^0.1.4"
+    "blob-to-buffer": "^1.2.6",
+    "msgpack-lite": "^0.1.20"
   }
 }
