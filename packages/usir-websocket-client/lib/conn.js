@@ -40,6 +40,16 @@ UsirTransportWebsocketClientConn.prototype = {
     this._call(message);
   },
 
+  callResponse: function(instance, ref, data) {
+    var message = client.callResponse(instance, ref, data);
+    this._call(message);
+  },
+
+  callError: function(instance, ref, data) {
+    var message = client.callError(instance, ref, data);
+    this._call(message);
+  },
+
   on: function(event, cb) {
     var emitter = this._emitter;
     emitter.on(event, cb);
