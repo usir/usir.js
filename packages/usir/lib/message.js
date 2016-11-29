@@ -1,37 +1,57 @@
+function ClientMount() {
+  if (!(this instanceof ClientMount)) return ClientMount.fromArray(arguments);
+}
+function ClientUnmount() {
+  if (!(this instanceof ClientUnmount)) return ClientUnmount.fromArray(arguments);
+}
+function ClientAuthenticate() {
+  if (!(this instanceof ClientAuthenticate)) return ClientAuthenticate.fromArray(arguments);
+}
+function ClientAction() {
+  if (!(this instanceof ClientAction)) return ClientAction.fromArray(arguments);
+}
+function ClientCallResponse() {
+  if (!(this instanceof ClientCallResponse)) return ClientCallResponse.fromArray(arguments);
+}
+function ClientCallError() {
+  if (!(this instanceof ClientCallError)) return ClientCallError.fromArray(arguments);
+}
+
+function ServerMounted() {}
+function ServerMounted() {}
+function ServerNotFound() {}
+function ServerAuthenticationRequired() {}
+function ServerAuthenticationInvalid() {}
+function ServerUnauthorized() {}
+function ServerAuthenticationAcknowledged() {}
+function ServerActionAcknowledged() {}
+function ServerActionInvalid() {}
+function ServerInfo() {}
+function ServerCall() {}
+function ServerError() {}
+
 exports = module.exports = {
   client: {
-    mount: id(function ClientMount() {
-      if (!(this instanceof ClientMount)) return new ClientMount.fromArray(arguments);
-    }, 0, ['instance', 'path', 'state', 'props']),
-    unmount: id(function ClientUnmount() {
-      if (!(this instanceof ClientUnmount)) return new ClientUnmount.fromArray(arguments);
-    }, 1, ['instance']),
-    authenticate: id(function ClientAuthenticate() {
-      if (!(this instanceof ClientAuthenticate)) return new ClientAuthenticate.fromArray(arguments);
-    }, 2, ['instance', 'method', 'token']),
-    action: id(function ClientAction() {
-      if (!(this instanceof ClientAction)) return new ClientAction.fromArray(arguments);
-    }, 3, ['instance', 'ref', 'body']),
-    callResponse: id(function ClientCallResponse() {
-      if (!(this instanceof ClientCallResponse)) return new ClientCallResponse.fromArray(arguments);
-    }, 4, ['instance', 'ref', 'data']),
-    callError: id(function ClientCallError() {
-      if (!(this instanceof ClientCallError)) return new ClientCallError.fromArray(arguments);
-    }, 5, ['instance', 'ref', 'message']),
+    mount: id(ClientMount, 0, ['instance', 'path', 'state', 'props']),
+    unmount: id(ClientUnmount, 1, ['instance']),
+    authenticate: id(ClientAuthenticate, 2, ['instance', 'method', 'token']),
+    action: id(ClientAction, 3, ['instance', 'ref', 'body']),
+    callResponse: id(ClientCallResponse, 4, ['instance', 'ref', 'data']),
+    callError: id(ClientCallError, 5, ['instance', 'ref', 'message']),
   },
   server: {
-    mounted: id(function ServerMounted() {}, 8, ['instance', 'path', 'state', 'body']),
-    unmounted: id(function ServerMounted() {}, 9, ['instance']),
-    notFound: id(function ServerNotFound() {}, 10, ['instance', 'path']),
-    authenticationRequired: id(function ServerAuthenticationRequired() {}, 11, ['instance', 'methods']),
-    authenticationInvalid: id(function ServerAuthenticationInvalid() {}, 12, ['instance', 'method']),
-    unauthorized: id(function ServerUnauthorized() {}, 13, ['instance', 'info']),
-    authenticationAcknowledged: id(function ServerAuthenticationAcknowledged(){}, 14, ['instance', 'method']),
-    actionAcknowledged: id(function ServerActionAcknowledged() {}, 15, ['instance', 'ref']),
-    actionInvalid: id(function ServerActionInvalid() {}, 16, ['instance', 'ref', 'info']),
-    info: id(function ServerInfo() {}, 17, ['instance', 'name', 'data']),
-    call: id(function ServerCall() {}, 18, ['instance', 'name', 'data', 'ref']),
-    error: id(function ServerError() {}, 19, ['instance', 'path', 'info'])
+    mounted: id(ServerMounted, 8, ['instance', 'path', 'state', 'body']),
+    unmounted: id(ServerMounted, 9, ['instance']),
+    notFound: id(ServerNotFound, 10, ['instance', 'path']),
+    authenticationRequired: id(ServerAuthenticationRequired, 11, ['instance', 'methods']),
+    authenticationInvalid: id(ServerAuthenticationInvalid, 12, ['instance', 'method']),
+    unauthorized: id(ServerUnauthorized, 13, ['instance', 'info']),
+    authenticationAcknowledged: id(ServerAuthenticationAcknowledged, 14, ['instance', 'method']),
+    actionAcknowledged: id(ServerActionAcknowledged, 15, ['instance', 'ref']),
+    actionInvalid: id(ServerActionInvalid, 16, ['instance', 'ref', 'info']),
+    info: id(ServerInfo, 17, ['instance', 'name', 'data']),
+    call: id(ServerCall, 18, ['instance', 'name', 'data', 'ref']),
+    error: id(ServerError, 19, ['instance', 'path', 'info'])
   }
 };
 
