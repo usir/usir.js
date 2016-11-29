@@ -18,7 +18,7 @@ function ClientCallError() {
 }
 
 function ServerMounted() {}
-function ServerMounted() {}
+function ServerUnmounted() {}
 function ServerNotFound() {}
 function ServerAuthenticationRequired() {}
 function ServerAuthenticationInvalid() {}
@@ -41,7 +41,7 @@ exports = module.exports = {
   },
   server: {
     mounted: id(ServerMounted, 8, ['instance', 'path', 'state', 'body']),
-    unmounted: id(ServerMounted, 9, ['instance']),
+    unmounted: id(ServerUnmounted, 9, ['instance']),
     notFound: id(ServerNotFound, 10, ['instance', 'path']),
     authenticationRequired: id(ServerAuthenticationRequired, 11, ['instance', 'methods']),
     authenticationInvalid: id(ServerAuthenticationInvalid, 12, ['instance', 'method']),
